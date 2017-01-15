@@ -106,8 +106,8 @@ class SRBO:
             out += '\t{0:10s}: {1:10.5f}\n'.format(attr, getattr(self, attr))
 
         out += '\nBoundaries:\n'
-        out += '\t{0:10s}: {1:10.5f}\n'.format('rmin', getattr(self, 'rmin'))
-        out += '\t{0:10s}: {1:10.5f}\n'.format('rmax', getattr(self, 'rmax'))
+        for attr in ['rmin', 'rmax', 'Vfact', 'Vthrs']:
+            out += '\t{0:10s}: {1:10.5f}\n'.format(attr, getattr(self, attr))
 
         out += '\n\t{0:10s}: {1:10.5f}\n'.format('Beta', self.beta)
 
