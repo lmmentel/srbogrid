@@ -1,2 +1,2 @@
 
-from srbo import SRBO
+from .srbo import SRBO
