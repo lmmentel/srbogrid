@@ -32,9 +32,17 @@ class SRBO:
         Vthrs : float
             Parameter for getting `rmax`, Vthrs = [De - V(rmax)]/De,
             default=0.001
+
+    .. note::
+
+       `Vfact` and `Vthrs` are used to estimate the `rmin` and `rmax`
+       parameters based on the Morse potential model, but `rmin` and
+       `rmax` can be also passed explicitly and `Vfact`, `Vthrs` will
+       be skipped
     '''
 
-    def __init__(self, Re, De, ke, nrep, natt, Vfact=1.5, Vthrs=0.001):
+    def __init__(self, Re, De, ke, nrep, natt, Vfact=1.5, Vthrs=0.001,
+                 rmin=None, rmax=None):
         self.Re = Re
         self.De = De
         self.ke = ke
@@ -45,23 +53,44 @@ class SRBO:
 
         # calculate the remaining parameters
         self.npoints = self.nrep + self.natt + 1
+        # Morse potential `alpha` parameter
         self.alpha = np.sqrt(self.ke / (2.0 * self.De))
+
+        # `rmin` and `rmax` need to be initialized after `alpha`
+        self.rmin = rmin
+        self.rmax = rmax
+
         self.f = float(self.natt) / float(self.nrep)
-        self.set_rmin()
-        self.set_rmax()
         self.set_beta()
 
-    def set_rmin(self):
+    @property
+    def rmin(self):
+        return self.rmin_
+
+    @rmin.setter
+    def rmin(self, value):
         'Calculate the `rmin` value'
 
-        v = self.Vfact * self.De
-        self.rmin = self.Re - np.log(1.0 + np.sqrt(v / self.De)) / self.alpha
+        if value is None:
+            v = self.Vfact * self.De
+            self.rmin_ = self.Re - np.log(1.0 + np.sqrt(v / self.De)) / self.alpha
+        else:
+            self.rmin_ = value
 
-    def set_rmax(self):
+    @property
+    def rmax(self):
         'Calculate the `rmax` value'
 
-        v = (1.0 - self.Vthrs) * self.De
-        self.rmax = self.Re - np.log(1.0 - np.sqrt(v / self.De)) / self.alpha
+        return self.rmax_
+
+    @rmax.setter
+    def rmax(self, value):
+
+        if value is None:
+            v = (1.0 - self.Vthrs) * self.De
+            self.rmax_ = self.Re - np.log(1.0 - np.sqrt(v / self.De)) / self.alpha
+        else:
+            self.rmax_ = value
 
     def set_beta(self):
         'Calculate the value of `beta` by finding a zero of `fbeta` function'
@@ -140,3 +169,8 @@ class SRBO:
         plt.plot(x, self.morse(x), 'k-')
         grid = self.get_bl_grid()
         plt.scatter(grid, self.morse(grid), color='r')
+
+    def save(self, filename):
+        'Save the grid as numpy array'
+
+        np.save(filename, self.get_bl_grid())
