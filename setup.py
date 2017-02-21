@@ -21,7 +21,7 @@ setup(
     name='srbogrid',
     packages=['srbogrid'],
     url='https://github.com/lmmentel/srbogrid',
-    version='0.1.0',
+    version='0.1.1',
     classifiers=[
         'Environment :: Console',
         'Operating System :: POSIX :: Linux',
