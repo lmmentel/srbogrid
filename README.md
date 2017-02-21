@@ -8,4 +8,4 @@ The code is based on the work described in: Rampino, S. (2016). Configuration-Sp
 ## Tutorial
 
 A short tutorial is available
-[here](http://nbviewer.jupyter.org/github/lmmentel/srbogrid/blob/master/notebooks/tutorial.ipynb).
+[here](http://nbviewer.jupyter.org/github/lmmentel/srbogrid/blob/master/notebooks/tutorial.ipynb) as a jupyter notebook.
