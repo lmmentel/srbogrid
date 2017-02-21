@@ -75,6 +75,7 @@ class SRBO:
             self._rmin = self.Re - np.log(1.0 + np.sqrt(self.Vfact)) / self.alpha
         else:
             self._rmin = value
+            self.Vfact = self.morse(np.array([self._rmin]))[0] / self.De
 
     @property
     def rmax(self):
@@ -89,6 +90,7 @@ class SRBO:
             self._rmax = self.Re - np.log(1.0 - np.sqrt(1.0 - self.Vthrs)) / self.alpha
         else:
             self._rmax = value
+            self.Vthrs = (self.De - self.morse(np.array([self._rmax]))[0]) / self.De
 
     def set_beta(self):
         'Calculate the value of `beta` by finding a zero of `fbeta` function'
