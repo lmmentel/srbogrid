@@ -2,8 +2,6 @@
 import numpy as np
 from scipy.optimize import ridder
 
-__version__ = '0.1.0'
-
 
 class SRBO:
     '''
@@ -32,6 +30,10 @@ class SRBO:
         Vthrs : float
             Parameter for getting `rmax`, Vthrs = [De - V(rmax)]/De,
             default=0.001
+        rmin : float
+            Smallest bond length in bohr
+        rmax : float
+            Largest bond length in bohr
 
     .. note::
 
