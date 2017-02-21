@@ -15,6 +15,7 @@ setup(
     author_email="lmmentel@gmail.com",
     description="Package for calculating space-reduced bond-order grids for diatomics",
     include_package_data=False,
+    install_requires=['numpy', 'scipy'],
     license=open('LICENSE.rst').read(),
     long_description=readme(),
     name='srbogrid',
