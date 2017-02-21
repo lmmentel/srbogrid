@@ -69,17 +69,16 @@ class SRBO:
 
     @rmin.setter
     def rmin(self, value):
-        'Calculate the `rmin` value'
+        'Calculate the `rmin` value and update the value `Vfact`'
 
         if value is None:
-            v = self.Vfact * self.De
-            self.rmin_ = self.Re - np.log(1.0 + np.sqrt(v / self.De)) / self.alpha
+            self.rmin_ = self.Re - np.log(1.0 + np.sqrt(self.Vfact)) / self.alpha
         else:
             self.rmin_ = value
 
     @property
     def rmax(self):
-        'Calculate the `rmax` value'
+        'Calculate the `rmax` value and update the value `Vthrs`'
 
         return self.rmax_
 
@@ -87,8 +86,7 @@ class SRBO:
     def rmax(self, value):
 
         if value is None:
-            v = (1.0 - self.Vthrs) * self.De
-            self.rmax_ = self.Re - np.log(1.0 - np.sqrt(v / self.De)) / self.alpha
+            self.rmax_ = self.Re - np.log(1.0 - np.sqrt(1.0 - self.Vthrs)) / self.alpha
         else:
             self.rmax_ = value
 
