@@ -132,18 +132,18 @@ class SRBO:
         'Print internals, mainly for debugging'
         out = 'System info:\n'
         for attr in ['Re', 'De', 'ke', 'alpha']:
-            out += '\t{0:10s}: {1:10.5f}\n'.format(attr, getattr(self, attr))
+            out += '\t{0:10s}: {1:10.6f}\n'.format(attr, getattr(self, attr))
 
         out += '\nBoundaries:\n'
         for attr in ['rmin', 'rmax', 'Vfact', 'Vthrs']:
-            out += '\t{0:10s}: {1:10.5f}\n'.format(attr, getattr(self, attr))
+            out += '\t{0:10s}: {1:10.6f}\n'.format(attr, getattr(self, attr))
 
-        out += '\n\t{0:10s}: {1:10.5f}\n'.format('Beta', self.beta)
+        out += '\n\t{0:10s}: {1:10.6f}\n'.format('Beta', self.beta)
 
         out += '\nGrid:\n'
         for attr in ['nrep', 'natt', 'npoints']:
             out += '\t{0:10s}: {1:10d}\n'.format(attr, getattr(self, attr))
-        out += '\t{0:10s}: {1:10.5f}\n'.format('f', getattr(self, 'f'))
+        out += '\t{0:10s}: {1:10.6f}\n'.format('f', getattr(self, 'f'))
         out += '\nGrid points:\n'
         out += str(self.get_bl_grid())
         return out
