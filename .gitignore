@@ -47,7 +47,7 @@ docs/source/_reference/
 # PyBuilder
 target/
 c-src/*.o
-
+notebooks/.ipynb_checkpoints/
 
 ### Vim swap files
 .*.swp
