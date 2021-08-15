@@ -22,7 +22,7 @@ setup(
     name='srbogrid',
     packages=['srbogrid'],
     url='https://github.com/lmmentel/srbogrid',
-    version='0.2.0',
+    version='0.2.1',
     classifiers=[
         'Environment :: Console',
         'Operating System :: POSIX :: Linux',
