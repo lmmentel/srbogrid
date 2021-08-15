@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "srbogrid"
+version = "0.1.1"
+description = "Package for calculating space-reduced bond-order grids for diatomics"
+authors = ["Lukasz Mentel <lmmentel@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = ">=3.7,<3.10"
+numpy = "^1.21.1"
+matplotlib = "^3.4.3"
+scipy = "^1.7.1"
+
+[tool.poetry.dev-dependencies]
+jupyterlab = "^3.1.6"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
