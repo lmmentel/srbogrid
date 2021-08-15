@@ -3,7 +3,12 @@ name = "srbogrid"
 version = "0.2.0"
 description = "Package for calculating space-reduced bond-order grids for diatomics"
 authors = ["Lukasz Mentel <lmmentel@gmail.com>"]
+maintainers = ["Lukasz Mentel <lmmentel@gmail.com>"]
+readme = "README.md"
 license = "MIT"
+homepage = "https://github.com/lmmentel/srbogrid"
+repository = "https://github.com/lmmentel/srbogrid"
+keywords = ["chemistry", "diatomics", "grid", "curve", "energy"]
 
 [tool.poetry.dependencies]
 python = ">=3.7,<3.10"
