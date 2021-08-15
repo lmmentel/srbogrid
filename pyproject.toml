@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "srbogrid"
-version = "0.1.1"
+version = "0.2.0"
 description = "Package for calculating space-reduced bond-order grids for diatomics"
 authors = ["Lukasz Mentel <lmmentel@gmail.com>"]
 license = "MIT"
